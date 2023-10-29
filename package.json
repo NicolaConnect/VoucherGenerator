@@ -9,5 +9,19 @@
         "axios": "^1.1.2",
         "laravel-vite-plugin": "^0.8.0",
         "vite": "^4.0.0"
+    },
+    "dependencies": {
+        "@headlessui/react": "^1.7.17",
+        "@tailwindcss/forms": "^0.5.6",
+        "autoprefixer": "^10.4.16",
+        "lodash": "^4.17.21",
+        "luxon": "^3.4.3",
+        "postcss": "^8.4.31",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "react-router": "^6.17.0",
+        "react-router-dom": "^6.17.0",
+        "swr": "^2.2.4",
+        "tailwindcss": "^3.3.5"
     }
 }

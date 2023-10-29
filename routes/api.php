@@ -14,6 +14,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::post('/generate', function(Request $request) {
+    $unifi = new UniFi_API\Client(config('services.controller.username'), config('services.controller.password'), config('services.controller.url'), config('services.controller.site_id'));
+    $unifi->login();
+
+    $vouchers = $unifi->create_voucher(
+        $request->type === '15-minutes' ? 15 : 60,
+        1,
+        1,
+        "Generato via UI Tablet",
+        $request->type === '15-minutes' ? 20480 : 51200,
+        $request->type === '60-minutes' ? 20480 : 51200,
+        null
+    );
+
+    $voucher = $unifi->stat_voucher($vouchers[0]->create_time);
+    $unifi->logout();
+
+    return response()->json([
+        'code' => str_split($voucher[0]->code, 5)[0] . '-' . str_split($voucher[0]->code, 5)[1]
+    ]);
 });

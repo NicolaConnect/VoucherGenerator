@@ -31,4 +31,10 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'controller' => [
+        'username' => env('CONTROLLER_USERNAME'),
+        'password' => env('CONTROLLER_PASSWORD'),
+        'url' => env('CONTROLLER_URL'),
+        'site_id' => env('CONTROLLER_SITE_ID'),
+    ]
 ];
